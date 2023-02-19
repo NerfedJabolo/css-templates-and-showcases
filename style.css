@@ -25,16 +25,54 @@ body {
 .header h1 {
   font-size: 50px;
   transition: 1s;
+  background-clip: text;
+  -webkit-background-clip: text;
+  background-image: linear-gradient(to right, #00f, #f00);
+  animation: color-change-reverse forwards;
 }
 
 .header h1:hover {
-  animation: color-change 1s forwards;
-  background-image: linear-gradient(to right, #00f260, #0575e6);
+  animation: color-change forwards;
+  background: linear-gradient(to right, #f00, #00f);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  transform: skewY(-5deg);
+}
+
+.text-container {
+  position: relative;
+  height: 50px;
+  overflow: hidden;
 }
 
 .header p {
   font-size: 20px;
 }
+
+.header-container {
+  position: relative;
+}
+
+.header-title:hover ~ .text-container .second-text {
+  max-height: 100%;
+  transition: max-height 2s ease;
+}
+
+.text-container {
+  position: relative;
+}
+
+.second-text {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height .5s ease;
+}
+
 
 .header-container {
   display: flex;
@@ -46,15 +84,18 @@ body {
 
 @keyframes color-change {
   0% {
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    text-fill-color: transparent;
+    background-position: left;
   }
   100% {
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    text-fill-color: transparent;
+    background-position: right;
+  }
+}
+
+@keyframes color-change-reverse {
+  0% {
+    background-position: right;
+  }
+  100% {
+    background-position: left;
   }
 }
