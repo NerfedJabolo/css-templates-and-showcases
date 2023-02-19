@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="animated-glowing-border.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button class="button glow-effect">
+      Hi there!
+      <svg class="glow-container">
+        <rect pathLength="100" stroke-linecap="round" class="glow-blur"></rect>
+        <rect pathLength="100" stroke-linecap="round" class="glow-line"></rect>
+      </svg>
+    </button>
+
+    <button class="button glow-effect" data-glow-animation="false">
+      Hi there!
+      <svg class="glow-container">
+        <rect pathLength="100" stroke-linecap="round" class="glow-blur"></rect>
+        <rect pathLength="100" stroke-linecap="round" class="glow-line"></rect>
+      </svg>
+    </button>
+
+    <button class="button glow-effect" data-glow-offset="true">
+      Hi there!
+      <svg class="glow-container">
+        <rect pathLength="100" stroke-linecap="round" class="glow-blur"></rect>
+        <rect pathLength="100" stroke-linecap="round" class="glow-line"></rect>
+      </svg>
+    </button>
+
+    <button class="button glow-effect" data-glow-animation="false" data-glow-offset="true">
+        Hi there!
+        <svg class="glow-container">
+          <rect pathLength="100" stroke-linecap="round" class="glow-blur"></rect>
+          <rect pathLength="100" stroke-linecap="round" class="glow-line"></rect>
+        </svg>
+      </button>
+
+    <script src="animated-glowing-border.js"></script>
+  </body>
+</html>
