@@ -8,9 +8,11 @@
 
 body {
   font-family: system-ui, sans-serif;
+  background-color: #333;
 }
 
 .header {
+  position: relative;
   background: linear-gradient(to right, #00f260, #0575e6);
   height: 500px;
   width: 100%;
@@ -50,10 +52,6 @@ body {
   font-size: 20px;
 }
 
-.header-container {
-  position: relative;
-}
-
 .header-title:hover ~ .text-container .second-text {
   max-height: 100%;
   transition: max-height 2s ease;
@@ -70,16 +68,103 @@ body {
   width: 100%;
   max-height: 0;
   overflow: hidden;
-  transition: max-height .5s ease;
+  transition: max-height 0.5s ease;
 }
 
-
 .header-container {
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 20px;
+}
+
+.button {
+  cursor: pointer;
+  font-size: 2rem;
+  font-family: inherit;
+  font-weight: 700;
+  color: hsl(320, 40%, 40%);
+  background-color: hsl(349 100% 95%);
+  padding: 0.75em 1.25em;
+  border: 0;
+  border-radius: 1.25rem;
+}
+
+.glow-effect {
+  --glow-line-color-1: #fff;
+  --glow-line-thickness: 4px;
+  --glow-line-length: 20px;
+  --glow-blur-color: #fff;
+  --glow-blur-size: 10px;
+  --glow-offset: 0px;
+  --animation-speed: 1200ms;
+
+  --container-offset: 100px;
+  position: relative;
+}
+
+.glow-container {
+  pointer-events: none;
+  position: absolute;
+  inset: calc(var(--container-offset) / -2);
+  width: calc(100% + var(--container-offset));
+  height: calc(100% + var(--container-offset));
+  opacity: 0;
+  /* outline: 3px solid blue; */
+}
+
+.glow-blur,
+.glow-line {
+  width: calc(100% - var(--container-offset) + var(--glow-offset));
+  height: calc(100% - var(--container-offset) + var(--glow-offset));
+  x: calc((var(--container-offset) / 2) + calc(var(--glow-offset) / -2));
+  y: calc((var(--container-offset) / 2) + calc(var(--glow-offset) / -2));
+  /* rx: 1.25rem; */
+  fill: transparent;
+  stroke: black;
+  stroke-width: 5px;
+  stroke-dasharray: var(--glow-line-length) calc(50px - var(--glow-line-length));
+}
+
+.glow-effect:is(:hover, :focus) :is(.glow-line, .glow-blur) {
+  stroke-dashoffset: -80px;
+  transition: stroke-dashoffset var(--animation-speed) ease-in;
+}
+
+.glow-line {
+  stroke: var(--glow-line-color-1);
+  stroke-width: var(--glow-line-thickness);
+}
+
+.glow-blur {
+  filter: blur(var(--glow-blur-size));
+  stroke: var(--glow-blur-color);
+  stroke-width: var(--glow-blur-size);
+}
+
+.glow-effect:is(:hover, :focus) .glow-container {
+  animation: glow-visibility var(--animation-speed);
+}
+
+@keyframes glow-visibility {
+  0%,
+  100% {
+    opacity: 0;
+  }
+  25%,
+  75% {
+    opacity: 1;
+  }
+}
+
+.glow-effect[data-glow-animation="false"] {
+  --glow-line-length: 50px;
+}
+
+.glow-effect[data-glow-offset="true"] {
+  --glow-offset: 10px;
 }
 
 @keyframes color-change {
@@ -98,4 +183,96 @@ body {
   100% {
     background-position: left;
   }
+}
+
+.child {
+  position: absolute;
+  bottom: 0;
+  transform: translateY(100%);
+  animation: slideInFromBottom 2s forwards;
+}
+
+@keyframes slideInFromBottom {
+  0% {
+    transform: translateY(0%);
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(-50%);
+  }
+}
+
+.projects {
+  padding-top: 50px;
+  padding-bottom: 50px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  flex-basis: calc(20% - 20px);
+  max-width: calc(20% - 20px);
+  border-radius: 20px;
+  height: 600px;
+  margin: 10px;
+  background-color: #ccc;
+}
+
+.card img {
+  width: 100%;
+  aspect-ratio: 4/2;
+  border-top-right-radius: 20px;
+  border-top-left-radius: 20px;
+}
+
+.card .description {
+  max-height: 50%;
+  width: 80%;
+  margin: 0 auto;
+  font-size: 20px;
+}
+
+.card .button-container {
+  position: relative;
+  flex-grow: 1;
+  width: 100%;
+  border-bottom-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+}
+
+.three-d-tilt-card .button-container {
+  background-image: linear-gradient(to right, #00f260, #0575e6);
+}
+
+.animated-glowing-border .button-container {
+  background-image: linear-gradient(to right, #0575e6, #e117d7);
+}
+
+.creative-borders .button-container {
+  --mask: radial-gradient(44.72px at 50% 60px, #000 99%, #0000 101%)
+      calc(50% - 40px) 0/80px 100%,
+    radial-gradient(44.72px at 50% -40px, #0000 99%, #000 101%) 50% 20px/80px
+      100% repeat-x;
+  -webkit-mask: var(--mask);
+  mask: var(--mask);
+  background-image: linear-gradient(to right, #e117d7, #e11717);
+}
+
+.themes-with-CSS-and-HTML .button-container {
+  background-image: linear-gradient(to right, #e11717, #E1CC17);
+}
+
+.button-container .button {
+  /*Center vertically and horizontally*/
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 100;
 }

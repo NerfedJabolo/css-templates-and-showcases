@@ -9,7 +9,7 @@
   </head>
   <body>
     <div class="header">
-      <span class="header-container">
+      <span class="header-container child">
         <h1 class="header-title">The CSS Showcase</h1>
         <div class="text-container show">
           <p class="first-text">
@@ -19,7 +19,70 @@
             ...the world has ever seen (from a beginner at least).
           </p>
         </div>
+        <button class="button glow-effect">
+          Hi there!
+          <svg class="glow-container">
+            <rect pathLength="100" stroke-linecap="round" class="glow-blur"></rect>
+            <rect pathLength="100" stroke-linecap="round" class="glow-line"></rect>
+          </svg>
+        </button>
       </span>
     </div>
+    <div class="projects">
+      <div class="card three-d-tilt-card" data-tilt>
+        <img src="/imgs/3d-tilt-card.jpg.png" alt="image of 3d tilt card showcase">
+        <p class="description">This showcase shows an amazing 3d card that tilts based on mouse position</p>
+        <div class="button-container">
+          <a href="3d-tilt-card/3d-tilt-card.html"><button class="button glow-effect">
+            View Demo
+            <svg class="glow-container">
+              <rect pathLength="100" stroke-linecap="round" class="glow-blur"></rect>
+              <rect pathLength="100" stroke-linecap="round" class="glow-line"></rect>
+            </svg>
+          </button></a>
+        </div>
+      </div>
+      <div class="card animated-glowing-border">
+        <img src="/imgs/animated-glowing-border.jpg" alt="image of animated glowing border showcase">
+        <p class="description">This showcase shows a beautiful button design animation using only HTML and CSS</p>
+        <div class="button-container">
+          <a href="animated-glowing-border/animated-glowing-border.html"><button class="button glow-effect">
+            View Demo
+            <svg class="glow-container">
+              <rect pathLength="100" stroke-linecap="round" class="glow-blur"></rect>
+              <rect pathLength="100" stroke-linecap="round" class="glow-line"></rect>
+            </svg>
+          </button></a>
+        </div>
+      </div>
+      <div class="card creative-borders">
+        <img src="/imgs/spikes.jpg" alt="image of creative borders showcase">
+        <p class="description">This showcase shows different types of border styles and designs.</p>
+        <div class="button-container">
+          <a href="creative-borders/creative-borders.html"><button class="button glow-effect">
+            View Demo
+            <svg class="glow-container">
+              <rect pathLength="100" stroke-linecap="round" class="glow-blur"></rect>
+              <rect pathLength="100" stroke-linecap="round" class="glow-line"></rect>
+            </svg>
+          </button></a>
+        </div>
+      </div>
+      <div class="card themes-with-CSS-and-HTML">
+        <img src="/imgs/themes.jpg" alt="image of themes with CSS and HTML showcase">
+        <p class="description">This showcase shows how easy it is to make a theme changer using only CSS and HTML.</p>
+        <div class="button-container">
+          <a href="themes-with-CSS-and-HTML-only/themes.html"><button class="button glow-effect">
+            View Demo
+            <svg class="glow-container">
+              <rect pathLength="100" stroke-linecap="round" class="glow-blur"></rect>
+              <rect pathLength="100" stroke-linecap="round" class="glow-line"></rect>
+            </svg>
+          </button></a>
+        </div>
+      </div>
+    </div>
+    <script src="index.js"></script>
+    <script src="vanilla-tilt.min.js"></script>
   </body>
 </html>
